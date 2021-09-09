@@ -1,12 +1,14 @@
-package com.example.spy;
+package com.example.spy.Models;
 
 import android.content.Context;
 
+import com.example.spy.Classes.MySharedPreferences;
+
 public class NumbersModel {
 
-    int playerNumber;
-    int spyNumber;
-    int timerValue;
+    public int playerNumber;
+    public int spyNumber;
+    public int timerValue;
 
     public NumbersModel(Context context) {
         NumbersModel numbersModel = MySharedPreferences.getInstance(context).getNumberModel();

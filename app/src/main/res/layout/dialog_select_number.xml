@@ -10,8 +10,8 @@
 
 
     <ImageView
-        android:layout_width="@dimen/_25sdp"
-        android:layout_height="@dimen/_25sdp"
+        android:layout_width="@dimen/iv_cancel_width"
+        android:layout_height="@dimen/iv_cancel_height"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/ic_cancel"
@@ -21,8 +21,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="تعداد بازیکنان"
-        android:textSize="@dimen/_25sdp"
+        android:text="@string/number_of_players"
+        android:textSize="@dimen/title_dialog_text_size"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/tv_title"
         android:textColor="@color/white"
@@ -40,8 +40,7 @@
         android:layout_marginVertical="@dimen/_15sdp">
 
         <ImageView
-            android:layout_width="@dimen/_30sdp"
-            android:layout_height="@dimen/_30sdp"
+         style="@style/dialog_select_arrows"
             android:background="@drawable/ic_left_arrow"
             android:layout_weight="1"
             android:id="@+id/iv_left_arrow"
@@ -50,7 +49,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/_30sdp"
+            android:textSize="@dimen/number_of_dialog_text_size"
             android:id="@+id/tv_number"
             android:text="5"
             android:textColor="@color/white"
@@ -58,8 +57,7 @@
             android:gravity="center"/>
 
         <ImageView
-            android:layout_width="@dimen/_30sdp"
-            android:layout_height="@dimen/_30sdp"
+         style="@style/dialog_select_arrows"
             android:background="@drawable/ic_right_arrow"
             android:layout_weight="1"
             android:id="@+id/iv_right_arrow"
@@ -81,8 +79,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ثبت"
-        android:textSize="@dimen/_20sdp"
+        android:text="@string/submit"
+        android:textSize="@dimen/button_select_dialog_text_size"
         app:layout_constraintTop_toBottomOf="@id/ll_player_number"
         android:id="@+id/btn_save_player"
         android:layout_marginHorizontal="@dimen/_15sdp"

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="main_cl_base">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/_10sdp</item>
+        <item name="android:layout_marginBottom">@dimen/_10sdp</item>
+        <item name="android:layout_marginLeft">@dimen/_15sdp</item>
+        <item name="android:layout_marginRight">@dimen/_15sdp</item>
+        <item name="android:background">@drawable/shape_rectangle</item>
+
+    </style>
+
+
+<style name="main_title_cl">
+
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_margin">@dimen/_6sdp</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:textSize">@dimen/main_title_cl_text_size</item>
+
+</style>
+
+
+    <style name="main_icons_cl">
+
+        <item name="android:layout_width">@dimen/main_icons_cl_width</item>
+        <item name="android:layout_height">@dimen/main_icons_cl_height</item>
+        <item name="android:layout_margin">@dimen/_5sdp</item>
+
+    </style>
+
+
+    <style name="main_arrows_cl">
+
+        <item name="android:layout_width">@dimen/main_arrows_cl_width</item>
+        <item name="android:layout_height">@dimen/main_arrows_cl_height</item>
+        <item name="android:layout_margin">@dimen/_5sdp</item>
+
+    </style>
+
+
+    <style name="main_numbers_cl">
+
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/_6sdp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/main_numbers_cl_text_size</item>
+
+    </style>
+
+
+
+    <style name="dialog_select_arrows">
+
+        <item name="android:layout_width">@dimen/dialog_select_arrows_width</item>
+        <item name="android:layout_height">@dimen/dialog_select_arrows_height</item>
+
+    </style>
+
+</resources>
+
+
+
+
+

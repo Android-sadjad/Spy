@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1E1B1B"
-    tools:context=".MainActivity">
+    android:background="@color/main_bg_color"
+    tools:context=".Activities.MainActivity">
 
     <LinearLayout
         android:id="@+id/ll_bar"
@@ -20,9 +20,9 @@
             android:id="@+id/tv_game"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="جاسوس بازی"
+            android:text="@string/spy_game"
             android:textColor="@color/white"
-            android:textSize="@dimen/_25sdp"
+            android:textSize="@dimen/spy_main_title_text_size"
             app:layout_constraintBottom_toTopOf="@id/cl_player"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -42,11 +42,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_player"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_15sdp"
-            android:layout_marginVertical="@dimen/_10sdp"
-            android:background="@drawable/shape_rectangle"
+           style="@style/main_cl_base"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -54,9 +50,7 @@
 
             <ImageView
                 android:id="@+id/iv_icon_player"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
-                android:layout_margin="@dimen/_5sdp"
+                style="@style/main_icons_cl"
                 android:background="@drawable/ic_player"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -66,21 +60,15 @@
 
             <TextView
                 android:id="@+id/tv_player"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_6sdp"
-                android:text="بازیکنان"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_20sdp"
+                android:text="@string/players"
+                style="@style/main_title_cl"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@id/iv_icon_player"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/iv_arrow_player"
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
-                android:layout_margin="@dimen/_5sdp"
+              style="@style/main_arrows_cl"
                 android:background="@drawable/ic_right_arrow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -88,12 +76,8 @@
 
             <TextView
                 android:id="@+id/tv_player_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_6sdp"
                 android:text="7"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_20sdp"
+              style="@style/main_numbers_cl"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/iv_arrow_player"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -103,20 +87,14 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_spy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_15sdp"
-            android:layout_marginVertical="@dimen/_10sdp"
-            android:background="@drawable/shape_rectangle"
+            style="@style/main_cl_base"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_player">
 
             <ImageView
                 android:id="@+id/iv_icon_spy"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
-                android:layout_margin="@dimen/_5sdp"
+               style="@style/main_icons_cl"
                 android:background="@drawable/ic_player"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -126,21 +104,15 @@
 
             <TextView
                 android:id="@+id/tv_spy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_6sdp"
-                android:text="جاسوس ها"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_20sdp"
+                style="@style/main_title_cl"
+                android:text="@string/spies"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@id/iv_icon_spy"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/iv_arrow_spy"
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
-                android:layout_margin="@dimen/_5sdp"
+                style="@style/main_arrows_cl"
                 android:background="@drawable/ic_right_arrow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -148,12 +120,8 @@
 
             <TextView
                 android:id="@+id/tv_spy_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_6sdp"
+                style="@style/main_numbers_cl"
                 android:text="1"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_20sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/iv_arrow_spy"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -163,20 +131,14 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_timer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_15sdp"
-            android:layout_marginVertical="@dimen/_10sdp"
-            android:background="@drawable/shape_rectangle"
+            style="@style/main_cl_base"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_spy">
 
             <ImageView
                 android:id="@+id/iv_icon_timer"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
-                android:layout_margin="@dimen/_5sdp"
+                style="@style/main_icons_cl"
                 android:background="@drawable/ic_player"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -186,21 +148,15 @@
 
             <TextView
                 android:id="@+id/tv_timer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_6sdp"
-                android:text="تایمر"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_20sdp"
+                android:text="@string/timer"
+                style="@style/main_title_cl"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@id/iv_icon_timer"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/iv_arrow_timer"
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
-                android:layout_margin="@dimen/_5sdp"
+                style="@style/main_arrows_cl"
                 android:background="@drawable/ic_right_arrow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -208,12 +164,8 @@
 
             <TextView
                 android:id="@+id/tv_timer_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_6sdp"
                 android:text="10.min"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_20sdp"
+                style="@style/main_numbers_cl"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/iv_arrow_timer"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -223,20 +175,14 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_objects"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_15sdp"
-            android:layout_marginVertical="@dimen/_10sdp"
-            android:background="@drawable/shape_rectangle"
+            style="@style/main_cl_base"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_timer">
 
             <ImageView
                 android:id="@+id/iv_icon_objects"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
-                android:layout_margin="@dimen/_5sdp"
+                style="@style/main_icons_cl"
                 android:background="@drawable/ic_player"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -246,21 +192,15 @@
 
             <TextView
                 android:id="@+id/tv_objects"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_6sdp"
-                android:text="عنوان ها"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_20sdp"
+                android:text="@string/objects"
+                style="@style/main_title_cl"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@id/iv_icon_objects"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/iv_arrow_objects"
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
-                android:layout_margin="@dimen/_5sdp"
+                style="@style/main_arrows_cl"
                 android:background="@drawable/ic_right_arrow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -274,12 +214,12 @@
 
 <Button
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_45sdp"
+    android:layout_height="@dimen/start_game_button_height"
     app:layout_constraintTop_toBottomOf="@id/cl_items"
     app:layout_constraintBottom_toBottomOf="parent"
     android:layout_marginHorizontal="@dimen/_35sdp"
-    android:text="شروع بازی"
-    android:textSize="@dimen/_17sdp"
+    android:text="@string/start_game"
+    android:textSize="@dimen/start_game_button_text_size"
     android:id="@+id/start_button"
 
     />

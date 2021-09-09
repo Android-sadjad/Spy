@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--splash_activity-->
+    <dimen name="tv_splash_logo_text_size">@dimen/_70ssp</dimen>
+
+
+
+    <!--main_activity-->
+    <dimen name="spy_main_title_text_size">@dimen/_25ssp</dimen>
+    <dimen name="start_game_button_height">@dimen/_45sdp</dimen>
+    <dimen name="start_game_button_text_size">@dimen/_17ssp</dimen>
+    <dimen name="main_title_cl_text_size">@dimen/_20ssp</dimen>
+    <dimen name="main_icons_cl_width">@dimen/_50sdp</dimen>
+    <dimen name="main_icons_cl_height">@dimen/_50sdp</dimen>
+    <dimen name="main_arrows_cl_width">@dimen/_20sdp</dimen>
+    <dimen name="main_arrows_cl_height">@dimen/_20sdp</dimen>
+    <dimen name="main_numbers_cl_text_size">@dimen/_20ssp</dimen>
+
+
+
+    <!--dialog_select_number-->
+    <dimen name="dialog_select_arrows_width">@dimen/_30sdp</dimen>
+    <dimen name="dialog_select_arrows_height">@dimen/_30sdp</dimen>
+    <dimen name="number_of_dialog_text_size">@dimen/_30ssp</dimen>
+    <dimen name="iv_cancel_width">@dimen/_25sdp</dimen>
+    <dimen name="iv_cancel_height">@dimen/_25sdp</dimen>
+    <dimen name="title_dialog_text_size">@dimen/_25ssp</dimen>
+    <dimen name="button_select_dialog_text_size">@dimen/_20ssp</dimen>
+
+
+
+
+
+
+
+</resources>
+
+

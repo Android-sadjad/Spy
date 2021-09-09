@@ -3,7 +3,7 @@
     <style name="Theme.Spy" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#4A484C</item>
-        <item name="colorPrimaryVariant">#525155</item>
+        <item name="colorPrimaryVariant">#1C1C1C</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

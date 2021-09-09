@@ -1,4 +1,4 @@
-package com.example.spy;
+package com.example.spy.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import java.time.Duration;
+import com.example.spy.Classes.MyConstant;
+import com.example.spy.R;
 
 public class SplashActivity extends AppCompatActivity {
     final int DURATION=1500;
@@ -23,10 +24,10 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashActivity.this,MainActivity.class));
+                startActivity(new Intent(SplashActivity.this, MainActivity.class));
                 finish();
             }
-        },MyConstant.SPLASH_SCREEN_DURATION);
+        }, MyConstant.SPLASH_SCREEN_DURATION);
 
 
     }
