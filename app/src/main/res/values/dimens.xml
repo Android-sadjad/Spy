@@ -29,7 +29,8 @@
     <dimen name="button_select_dialog_text_size">@dimen/_20ssp</dimen>
 
 
-
+    <!--game_activityr-->
+    <dimen name="tv_name_game_text_size">@dimen/_25ssp</dimen>
 
 
 

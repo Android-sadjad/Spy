@@ -3,6 +3,7 @@ package com.example.spy.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -42,16 +43,36 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    public void findViews() {
+        tvPlayerNumber = findViewById(R.id.tv_player_number);
+        tvSpyNumber = findViewById(R.id.tv_spy_number);
+        tvTimerValue = findViewById(R.id.tv_timer_number);
+
+        clObjects = findViewById(R.id.cl_objects);
+        clPlayer = findViewById(R.id.cl_player);
+        clSpy = findViewById(R.id.cl_spy);
+        clTimer = findViewById(R.id.cl_timer);
+
+        btnStart = findViewById(R.id.start_button);
+
+    }
+
+
+    public void init() {
+        numbersModel = new NumbersModel(MainActivity.this);
+
+    }
+
+
+
     private void setUpNumbers() {
         tvPlayerNumber.setText(String.valueOf(numbersModel.getPlayerNumber()));
         tvSpyNumber.setText(String.valueOf(numbersModel.getSpyNumber()));
         tvTimerValue.setText(String.valueOf(numbersModel.timerValue) +".min");
     }
 
-    public void init() {
-        numbersModel = new NumbersModel(MainActivity.this);
 
-    }
 
     public void configuration() {
 
@@ -69,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
         clTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
         clSpy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,15 +121,21 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
         clObjects.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
+
+
+
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,GameActivity.class));
 
             }
         });
@@ -112,17 +143,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void findViews() {
-        tvPlayerNumber = findViewById(R.id.tv_player_number);
-        tvSpyNumber = findViewById(R.id.tv_spy_number);
-        tvTimerValue = findViewById(R.id.tv_timer_number);
 
-        clObjects = findViewById(R.id.cl_objects);
-        clPlayer = findViewById(R.id.cl_player);
-        clSpy = findViewById(R.id.cl_spy);
-        clTimer = findViewById(R.id.cl_timer);
-
-        btnStart = findViewById(R.id.start_button);
-
-    }
 }
