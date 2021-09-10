@@ -19,12 +19,13 @@ import java.util.Random;
 public class GameActivity extends AppCompatActivity {
 
     int randomName;
-    List<Integer> randomSpy;
+    ArrayList<Integer> randomSpy;
+    ArrayList<String> nameList;
 
     int counterPlayer=0;
-    int counterSpy=0;
+    int counter=0;
 
-    ArrayList<String> nameList;
+
 
     NumbersModel numbersModel;
 
@@ -56,6 +57,7 @@ public class GameActivity extends AppCompatActivity {
     private void init() {
         numbersModel=new NumbersModel(GameActivity.this);
         randomSpy=new ArrayList<Integer>();
+        nameList=new ArrayList<String>();
 
         String[] locationList=getResources().getStringArray(R.array.location_list);
 
@@ -65,16 +67,31 @@ public class GameActivity extends AppCompatActivity {
         }
         nameObject=locationList[randomName];
 
-
-
         int spyNumber=numbersModel.getSpyNumber();
         int playerNumber=numbersModel.getPlayerNumber();
 
 
         for (int i=0;i<spyNumber;i++){
-            randomSpy.add(new Random().nextInt() % playerNumber);
+
+            int rand=new Random().nextInt() % playerNumber;
+
+            if (rand<0){
+                rand*=-1;
+            }
+
+            if (randomSpy.contains(rand)){
+                i--;
+            }else
+            randomSpy.add(rand);
         }
 
+
+        for (int i=0;i<playerNumber;i++){
+            if(randomSpy.contains(i)){
+                nameList.add(getString(R.string.you_are_spy));
+            }else
+            nameList.add(nameObject);
+        }
 
 
     }
@@ -84,17 +101,18 @@ public class GameActivity extends AppCompatActivity {
         btnNextPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (btnNextPlayer.getText().equals(R.string.close)){
+                if (btnNextPlayer.getText().equals(getString(R.string.close))){
                   finish();
                 }
                 counterPlayer++;
                 if (counterPlayer%2==0 && counterPlayer<=(numbersModel.getPlayerNumber())*2-1){
                     tvNameObject.setText(R.string.get_to_next_player);
-                    btnNextPlayer.setText(R.string.button_cover_up);
+                    btnNextPlayer.setText(R.string.button_turn_around);
                 }else if(counterPlayer%2!=0 && counterPlayer<=(numbersModel.getPlayerNumber())*2-1){
 
-                    tvNameObject.setText(nameObject);
-                    btnNextPlayer.setText(R.string.button_turn_around);
+
+                    tvNameObject.setText(nameList.get(counter++));
+                    btnNextPlayer.setText(R.string.button_cover_up);
                 }else {
                     btnNextPlayer.setText(R.string.close);
                     tvNameObject.setText("تایمر");

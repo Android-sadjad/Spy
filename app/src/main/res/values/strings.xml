@@ -24,6 +24,7 @@
     <string name="start">شروع</string>
     <string name="get_to_next_player">دستگاه را به نفر بعدی بدهید</string>
     <string name="close">بستن</string>
+    <string name="you_are_spy">شما جاسوس هستید</string>
 
 
 
@@ -41,6 +42,8 @@
 <item>طویله</item>
 <item>گلخانه</item>
 <item>دانشگاه</item>
+<item>مدرسه</item>
+<item>پارک</item>
 
 
  </array>
