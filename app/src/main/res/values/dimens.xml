@@ -31,6 +31,14 @@
 
     <!--game_activityr-->
     <dimen name="tv_name_game_text_size">@dimen/_25ssp</dimen>
+    <dimen name="tv_next_player_text_size">@dimen/_20ssp</dimen>
+    <dimen name="cv_game_width">@dimen/_230sdp</dimen>
+    <dimen name="cv_game_height">@dimen/_300sdp</dimen>
+    <dimen name="cv_strock_width">@dimen/_3sdp</dimen>
+    <dimen name="card_corner_radius_game">@dimen/_30sdp</dimen>
+    <dimen name="cv_elevation">@dimen/_10sdp</dimen>
+    <dimen name="iv_logo_game_width">@dimen/_120sdp</dimen>
+    <dimen name="iv_logo_game_height">@dimen/_120sdp</dimen>
 
 
 

@@ -3,8 +3,11 @@ package com.example.spy.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,20 +23,26 @@ public class GameActivity extends AppCompatActivity {
 
     int randomName;
     ArrayList<Integer> randomSpy;
-    ArrayList<String> nameList;
+    private ArrayList<String> nameList;
 
-    int counterPlayer=0;
-    int counter=0;
+    private int counterPlayer = 0;
+    private int counter = 0;
 
 
+    CountDownTimer countDownTimer;
 
-    NumbersModel numbersModel;
+    private Boolean timeRunning;
 
-    TextView tvNameObject;
-    Button btnNextPlayer;
+    private NumbersModel numbersModel;
+
+    private TextView tvNameObject;
+    private TextView tvNextPlayer;
+    private Button btnNextPlayer;
+    private ImageView ivLogoCard;
 
     String nameObject;
 
+    private long timerSize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,49 +57,52 @@ public class GameActivity extends AppCompatActivity {
     }
 
 
-
     private void findViews() {
         tvNameObject = findViewById(R.id.tv_name_object);
         btnNextPlayer = findViewById(R.id.next_btn);
+        ivLogoCard = findViewById(R.id.iv_logo_card);
+        tvNextPlayer = findViewById(R.id.tv_next_player);
     }
 
     private void init() {
-        numbersModel=new NumbersModel(GameActivity.this);
-        randomSpy=new ArrayList<Integer>();
-        nameList=new ArrayList<String>();
+        numbersModel = new NumbersModel(GameActivity.this);
+        randomSpy = new ArrayList<Integer>();
+        nameList = new ArrayList<String>();
 
-        String[] locationList=getResources().getStringArray(R.array.location_list);
+        timerSize = (int) numbersModel.getTimerValue() * 60000;
+
+        String[] locationList = getResources().getStringArray(R.array.location_list);
 
         randomName = new Random().nextInt() % locationList.length;
-        if (randomName<0){
-            randomName*=-1;
+        if (randomName < 0) {
+            randomName *= -1;
         }
-        nameObject=locationList[randomName];
+        nameObject = locationList[randomName];
 
-        int spyNumber=numbersModel.getSpyNumber();
-        int playerNumber=numbersModel.getPlayerNumber();
+        int spyNumber = numbersModel.getSpyNumber();
+        int playerNumber = numbersModel.getPlayerNumber();
 
 
-        for (int i=0;i<spyNumber;i++){
+        for (int i = 0; i < spyNumber; i++) {
 
-            int rand=new Random().nextInt() % playerNumber;
+            int rand = new Random().nextInt() % playerNumber;
 
-            if (rand<0){
-                rand*=-1;
+            if (rand < 0) {
+                rand *= -1;
             }
 
-            if (randomSpy.contains(rand)){
+            if (randomSpy.contains(rand)) {
                 i--;
-            }else
-            randomSpy.add(rand);
+            } else
+                randomSpy.add(rand);
         }
 
 
-        for (int i=0;i<playerNumber;i++){
-            if(randomSpy.contains(i)){
+        for (int i = 0; i < playerNumber; i++) {
+            if (randomSpy.contains(i)) {
                 nameList.add(getString(R.string.you_are_spy));
-            }else
-            nameList.add(nameObject);
+            } else
+                nameList.add(nameObject);
         }
 
 
@@ -101,21 +113,31 @@ public class GameActivity extends AppCompatActivity {
         btnNextPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (btnNextPlayer.getText().equals(getString(R.string.close))){
-                  finish();
+                if (btnNextPlayer.getText().equals(getString(R.string.close))) {
+                    finish();
                 }
                 counterPlayer++;
-                if (counterPlayer%2==0 && counterPlayer<=(numbersModel.getPlayerNumber())*2-1){
+                if (counterPlayer % 2 == 0 && counterPlayer <= (numbersModel.getPlayerNumber()) * 2 - 1) {
+
+                    ivLogoCard.setVisibility(View.VISIBLE);
+                    tvNextPlayer.setVisibility(View.VISIBLE);
+                    tvNameObject.setVisibility(View.GONE);
                     tvNameObject.setText(R.string.get_to_next_player);
                     btnNextPlayer.setText(R.string.button_turn_around);
-                }else if(counterPlayer%2!=0 && counterPlayer<=(numbersModel.getPlayerNumber())*2-1){
 
+                } else if (counterPlayer % 2 != 0 && counterPlayer <= (numbersModel.getPlayerNumber()) * 2 - 1) {
+                    tvNextPlayer.setVisibility(View.GONE);
+                    ivLogoCard.setVisibility(View.GONE);
+                    tvNameObject.setVisibility(View.VISIBLE);
 
                     tvNameObject.setText(nameList.get(counter++));
                     btnNextPlayer.setText(R.string.button_cover_up);
-                }else {
+                } else {
+
+                    tvNextPlayer.setVisibility(View.GONE);
+                    ivLogoCard.setVisibility(View.GONE);
                     btnNextPlayer.setText(R.string.close);
-                    tvNameObject.setText("تایمر");
+                    startTimer();
 
                 }
 
@@ -126,6 +148,35 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
+    private void startTimer() {
+        countDownTimer = new CountDownTimer(timerSize, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timerSize = millisUntilFinished;
+                updateTimer();
+            }
+
+            @Override
+            public void onFinish() {
+                tvNameObject.setText("پایان");
+            }
+        }.start();
+
+    }
+
+
+    private void updateTimer() {
+        int minutes = (int) timerSize / 60000;
+        int seconds = (int) timerSize % 60000 / 1000;
+        String timeLeftText;
+        timeLeftText = "" + minutes;
+        timeLeftText += ":";
+        if (seconds < 10) {
+            timeLeftText += "0";
+        }
+        timeLeftText += seconds;
+        tvNameObject.setText(timeLeftText);
+    }
 
     @Override
     public void onBackPressed() {
