@@ -7,10 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.example.spy.Activities.MainActivity;
 import com.example.spy.Classes.MyConstant;
 import com.example.spy.Interfaces.CallBackNumbers;
 import com.example.spy.Models.NumbersModel;
@@ -183,7 +185,12 @@ public class PlayerDialog extends Dialog {
 
 
                 } else if (tag.equals(MyConstant.CL_SPY)) {
-                    callBackNumbers.callNumber(numbersModel.getSpyNumber());
+                    if (numbersModel.getSpyNumber() > numbersModel.getPlayerNumber() / 2) {
+                        Toast.makeText(context,"تعداد جاسوس ها بیش از نصف بازیکنان است", Toast.LENGTH_LONG).show();
+                    return;
+                    }
+                    else {  callBackNumbers.callNumber(numbersModel.getSpyNumber());}
+
 
                 } else if (tag.equals(MyConstant.CL_TIMER)) {
 

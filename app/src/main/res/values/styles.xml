@@ -30,7 +30,7 @@
 
         <item name="android:layout_width">@dimen/main_icons_cl_width</item>
         <item name="android:layout_height">@dimen/main_icons_cl_height</item>
-        <item name="android:layout_margin">@dimen/_5sdp</item>
+        <item name="android:layout_margin">@dimen/_7sdp</item>
 
     </style>
 

@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                 numbersModel=new NumbersModel(MainActivity.this);
 
                 if (numbersModel.getSpyNumber() > numbersModel.getPlayerNumber() / 2) {
-                    Toast.makeText(MainActivity.this, "تعداد جاسوس ها بیش از نصف بازیکنان است", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, getString(R.string.more_than_half_spy), Toast.LENGTH_LONG).show();
                     return;
                 } else {
                     startActivity(new Intent(MainActivity.this, GameActivity.class));

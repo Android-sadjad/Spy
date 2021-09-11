@@ -3,6 +3,7 @@
 
 
     <string name="spy_game">جاسوس بازی</string>
+    <string name="spy_english">SPY</string>
     <string name="players">بازیکنان</string>
     <string name="spies">جاسوس ها</string>
     <string name="timer">تایمر</string>
@@ -25,14 +26,10 @@
     <string name="get_to_next_player">دستگاه را به نفر بعدی بدهید</string>
     <string name="close">بستن</string>
     <string name="you_are_spy">شما جاسوس هستید</string>
+    <string name="more_than_half_spy">تعداد جاسوس ها بیش از نصف بازیکنان است</string>
 
 
-
-
-
-
-
- <array name="location_list">
+    <array name="location_list">
 
 <item>کارخانه</item>
 <item>خانه سالمندان</item>

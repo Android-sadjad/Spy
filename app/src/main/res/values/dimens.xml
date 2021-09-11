@@ -7,15 +7,17 @@
 
 
     <!--main_activity-->
-    <dimen name="spy_main_title_text_size">@dimen/_25ssp</dimen>
+    <dimen name="spy_main_title_text_size">@dimen/_35ssp</dimen>
     <dimen name="start_game_button_height">@dimen/_45sdp</dimen>
     <dimen name="start_game_button_text_size">@dimen/_17ssp</dimen>
-    <dimen name="main_title_cl_text_size">@dimen/_20ssp</dimen>
-    <dimen name="main_icons_cl_width">@dimen/_50sdp</dimen>
-    <dimen name="main_icons_cl_height">@dimen/_50sdp</dimen>
+    <dimen name="main_title_cl_text_size">@dimen/_18ssp</dimen>
+    <dimen name="main_icons_cl_width">@dimen/_40sdp</dimen>
+    <dimen name="main_icons_cl_height">@dimen/_40sdp</dimen>
     <dimen name="main_arrows_cl_width">@dimen/_20sdp</dimen>
     <dimen name="main_arrows_cl_height">@dimen/_20sdp</dimen>
     <dimen name="main_numbers_cl_text_size">@dimen/_20ssp</dimen>
+    <dimen name="iv_logo_main_height">@dimen/_100sdp</dimen>
+    <dimen name="iv_logo_main_width">@dimen/_100sdp</dimen>
 
 
 
