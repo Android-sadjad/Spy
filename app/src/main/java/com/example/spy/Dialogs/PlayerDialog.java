@@ -22,7 +22,6 @@ public class PlayerDialog extends Dialog {
     NumbersModel numbersModel;
 
 
-
     CallBackNumbers callBackNumbers;
 
     int counterPlayer;
@@ -80,9 +79,9 @@ public class PlayerDialog extends Dialog {
             tvTitle.setText(R.string.number_of_spies);
             tvNumber.setText(String.valueOf(numbersModel.getSpyNumber()));
 
-        }else if(tag.equals(MyConstant.CL_TIMER)){
+        } else if (tag.equals(MyConstant.CL_TIMER)) {
             tvTitle.setText(R.string.time);
-            tvNumber.setText(String.valueOf(numbersModel.getTimerValue()) +".min");
+            tvNumber.setText(String.valueOf(numbersModel.getTimerValue()) + ".min");
 
         }
 
@@ -96,7 +95,8 @@ public class PlayerDialog extends Dialog {
             public void onClick(View v) {
 
                 if (tag.equals(MyConstant.CL_PLAYER)) {
-                    counterPlayer = numbersModel.playerNumber;
+                    counterPlayer = numbersModel.getPlayerNumber();
+
 
                     if (counterPlayer < 14) {
                         counterPlayer++;
@@ -107,7 +107,10 @@ public class PlayerDialog extends Dialog {
                     numbersModel.setPlayerNumber(counterPlayer);
 
                 } else if (tag.equals(MyConstant.CL_SPY)) {
-                    counterSpy = numbersModel.spyNumber;
+
+                    counterSpy = numbersModel.getSpyNumber();
+
+
 
                     if (counterSpy < (numbersModel.getPlayerNumber()) / 2) {
                         counterSpy++;
@@ -115,14 +118,14 @@ public class PlayerDialog extends Dialog {
 
                     tvNumber.setText(String.valueOf(counterSpy));
                     numbersModel.setSpyNumber(counterSpy);
-                }else if (tag.equals(MyConstant.CL_TIMER)){
+                } else if (tag.equals(MyConstant.CL_TIMER)) {
 
 
-                    counterTimer=numbersModel.timerValue;
-                    if(counterTimer<=40){
-                        counterTimer+=5;
+                    counterTimer = numbersModel.getTimerValue();
+                    if (counterTimer <= 40) {
+                        counterTimer += 5;
                     }
-                    tvNumber.setText(String.valueOf(counterTimer)+".min");
+                    tvNumber.setText(String.valueOf(counterTimer) + ".min");
                     numbersModel.setTimerValue(counterTimer);
 
                 }
@@ -136,7 +139,7 @@ public class PlayerDialog extends Dialog {
 
 
                 if (tag.equals(MyConstant.CL_PLAYER)) {
-                    counterPlayer = numbersModel.playerNumber;
+                    counterPlayer = numbersModel.getPlayerNumber();
 
                     if (counterPlayer > 3) {
                         counterPlayer--;
@@ -146,7 +149,7 @@ public class PlayerDialog extends Dialog {
                     numbersModel.setPlayerNumber(counterPlayer);
 
                 } else if (tag.equals(MyConstant.CL_SPY)) {
-                    counterSpy = numbersModel.spyNumber;
+                    counterSpy = numbersModel.getSpyNumber();
 
                     if (counterSpy > 1) {
                         counterSpy--;
@@ -154,14 +157,14 @@ public class PlayerDialog extends Dialog {
 
                     tvNumber.setText(String.valueOf(counterSpy));
                     numbersModel.setSpyNumber(counterSpy);
-                }else if (tag.equals(MyConstant.CL_TIMER)){
+                } else if (tag.equals(MyConstant.CL_TIMER)) {
 
 
-                    counterTimer=numbersModel.timerValue;
-                    if(counterTimer>5){
-                        counterTimer-=5;
+                    counterTimer = numbersModel.getTimerValue();
+                    if (counterTimer > 5) {
+                        counterTimer -= 5;
                     }
-                    tvNumber.setText(String.valueOf(counterTimer) +".min");
+                    tvNumber.setText(String.valueOf(counterTimer) + ".min");
                     numbersModel.setTimerValue(counterTimer);
 
                 }
@@ -176,13 +179,15 @@ public class PlayerDialog extends Dialog {
 
                 numbersModel.updateNumbersModel(context, numbersModel);
                 if (tag.equals(MyConstant.CL_PLAYER)) {
-                    callBackNumbers.callNumber(numbersModel.playerNumber);
+                    callBackNumbers.callNumber(numbersModel.getPlayerNumber());
+
+
                 } else if (tag.equals(MyConstant.CL_SPY)) {
-                    callBackNumbers.callNumber(numbersModel.spyNumber);
+                    callBackNumbers.callNumber(numbersModel.getSpyNumber());
 
-                }else if(tag.equals(MyConstant.CL_TIMER)){
+                } else if (tag.equals(MyConstant.CL_TIMER)) {
 
-                    callBackNumbers.callNumber(numbersModel.timerValue);
+                    callBackNumbers.callNumber(numbersModel.getTimerValue());
                 }
 
                 cancel();
@@ -209,10 +214,9 @@ public class PlayerDialog extends Dialog {
         tvTitle = findViewById(R.id.tv_title);
         saveBtn = findViewById(R.id.btn_save_player);
         clDialog = findViewById(R.id.cl_dialog_number);
-        ivCancel=findViewById(R.id.iv_cancle);
+        ivCancel = findViewById(R.id.iv_cancle);
 
     }
-
 
 
 }

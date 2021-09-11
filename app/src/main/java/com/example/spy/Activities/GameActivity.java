@@ -136,6 +136,7 @@ public class GameActivity extends AppCompatActivity {
 
                     tvNextPlayer.setVisibility(View.GONE);
                     ivLogoCard.setVisibility(View.GONE);
+                    
                     btnNextPlayer.setText(R.string.close);
                     startTimer();
 

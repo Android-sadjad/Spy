@@ -6,9 +6,9 @@ import com.example.spy.Classes.MySharedPreferences;
 
 public class NumbersModel {
 
-    public int playerNumber;
-    public int spyNumber;
-    public int timerValue;
+    private int playerNumber;
+    private int spyNumber;
+    private int timerValue;
 
     public NumbersModel(Context context) {
         NumbersModel numbersModel = MySharedPreferences.getInstance(context).getNumberModel();

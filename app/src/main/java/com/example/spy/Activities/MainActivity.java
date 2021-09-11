@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.spy.Interfaces.CallBackNumbers;
 import com.example.spy.Classes.MyConstant;
@@ -60,18 +61,17 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void init() {
+
         numbersModel = new NumbersModel(MainActivity.this);
 
     }
 
 
-
     private void setUpNumbers() {
         tvPlayerNumber.setText(String.valueOf(numbersModel.getPlayerNumber()));
         tvSpyNumber.setText(String.valueOf(numbersModel.getSpyNumber()));
-        tvTimerValue.setText(String.valueOf(numbersModel.timerValue) +".min");
+        tvTimerValue.setText(String.valueOf(numbersModel.getTimerValue()) + ".min");
     }
-
 
 
     public void configuration() {
@@ -82,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
                 PlayerDialog playerDialog = new PlayerDialog(MainActivity.this, MyConstant.CL_PLAYER, new CallBackNumbers() {
                     @Override
                     public void callNumber(int number) {
+
                         tvPlayerNumber.setText(String.valueOf(number));
+
                     }
 
                 });
@@ -95,13 +97,13 @@ public class MainActivity extends AppCompatActivity {
         clTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              PlayerDialog playerDialog=new PlayerDialog(MainActivity.this, MyConstant.CL_TIMER, new CallBackNumbers() {
-                  @Override
-                  public void callNumber(int number) {
-                      tvTimerValue.setText(String.valueOf(number)+".min");
-                  }
-              });
-              playerDialog.show();
+                PlayerDialog playerDialog = new PlayerDialog(MainActivity.this, MyConstant.CL_TIMER, new CallBackNumbers() {
+                    @Override
+                    public void callNumber(int number) {
+                        tvTimerValue.setText(String.valueOf(number) + ".min");
+                    }
+                });
+                playerDialog.show();
 
             }
         });
@@ -131,17 +133,28 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,GameActivity.class));
+                Toast.makeText(MainActivity.this, "" + String.valueOf(numbersModel.getPlayerNumber())+""+String.valueOf(numbersModel.getSpyNumber()), Toast.LENGTH_SHORT).show();
+
+                if (numbersModel.getSpyNumber() >= numbersModel.getPlayerNumber() / 2) {
+                    Toast.makeText(MainActivity.this, "تعداد جاسوس ها بیش از نصف بازیکنان است", Toast.LENGTH_LONG).show();
+                    return;
+                } else {
+                    startActivity(new Intent(MainActivity.this, GameActivity.class));
+
+                }
+
 
             }
         });
 
     }
 
-
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        numbersModel=new NumbersModel(MainActivity.this);
+    }
 }
