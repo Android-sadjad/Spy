@@ -136,9 +136,9 @@ public class MainActivity extends AppCompatActivity {
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "" + String.valueOf(numbersModel.getPlayerNumber())+""+String.valueOf(numbersModel.getSpyNumber()), Toast.LENGTH_SHORT).show();
+                numbersModel=new NumbersModel(MainActivity.this);
 
-                if (numbersModel.getSpyNumber() >= numbersModel.getPlayerNumber() / 2) {
+                if (numbersModel.getSpyNumber() > numbersModel.getPlayerNumber() / 2) {
                     Toast.makeText(MainActivity.this, "تعداد جاسوس ها بیش از نصف بازیکنان است", Toast.LENGTH_LONG).show();
                     return;
                 } else {
@@ -152,9 +152,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        numbersModel=new NumbersModel(MainActivity.this);
-    }
+
 }

@@ -190,6 +190,7 @@ public class PlayerDialog extends Dialog {
                     callBackNumbers.callNumber(numbersModel.getTimerValue());
                 }
 
+
                 cancel();
 
 
