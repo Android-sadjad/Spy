@@ -5,7 +5,6 @@
     <dimen name="tv_splash_logo_text_size">@dimen/_70ssp</dimen>
 
 
-
     <!--main_activity-->
     <dimen name="spy_main_title_text_size">@dimen/_35ssp</dimen>
     <dimen name="start_game_button_height">@dimen/_45sdp</dimen>
@@ -20,13 +19,12 @@
     <dimen name="iv_logo_main_width">@dimen/_100sdp</dimen>
 
 
-
     <!--dialog_select_number-->
     <dimen name="dialog_select_arrows_width">@dimen/_30sdp</dimen>
     <dimen name="dialog_select_arrows_height">@dimen/_30sdp</dimen>
     <dimen name="number_of_dialog_text_size">@dimen/_30ssp</dimen>
-    <dimen name="iv_cancel_width">@dimen/_25sdp</dimen>
-    <dimen name="iv_cancel_height">@dimen/_25sdp</dimen>
+    <dimen name="iv_cancel_width">@dimen/_30sdp</dimen>
+    <dimen name="iv_cancel_height">@dimen/_30sdp</dimen>
     <dimen name="title_dialog_text_size">@dimen/_25ssp</dimen>
     <dimen name="button_select_dialog_text_size">@dimen/_20ssp</dimen>
 
@@ -41,8 +39,6 @@
     <dimen name="cv_elevation">@dimen/_10sdp</dimen>
     <dimen name="iv_logo_game_width">@dimen/_120sdp</dimen>
     <dimen name="iv_logo_game_height">@dimen/_120sdp</dimen>
-
-
 
 
 </resources>

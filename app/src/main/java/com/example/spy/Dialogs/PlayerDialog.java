@@ -12,51 +12,60 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.example.spy.Activities.MainActivity;
 import com.example.spy.Classes.MyConstant;
 import com.example.spy.Interfaces.CallBackNumbers;
 import com.example.spy.Models.NumbersModel;
 import com.example.spy.R;
 
-
 public class PlayerDialog extends Dialog {
 
-    NumbersModel numbersModel;
+    private ConstraintLayout clDialog;
 
+    private ImageView ivRightArrow;
+    private ImageView ivLeftArrow;
+    private ImageView ivCancel;
 
-    CallBackNumbers callBackNumbers;
+    private TextView tvNumber;
+    private TextView tvTitle;
+    private Button saveBtn;
 
-    int counterPlayer;
-    int counterSpy;
-    int counterTimer;
+    private NumbersModel numbersModel;
+    private final CallBackNumbers callBackNumbers;
 
-    ConstraintLayout clDialog;
+    private int counter;
 
-    ImageView ivRightArrow;
-    ImageView ivLeftArrow;
-    ImageView ivCancel;
+    private final String tag;
 
-    TextView tvNumber;
-    TextView tvTitle;
-
-    String tag;
-    Context context;
-    Button saveBtn;
 
     public PlayerDialog(@NonNull Context context, String tag, CallBackNumbers callBackNumbers) {
         super(context);
-
         setContentView(R.layout.dialog_select_number);
+        setCancelable(false);
+
         this.tag = tag;
-        this.context = context;
         this.callBackNumbers = callBackNumbers;
+
         findViews();
-        init();
-        setSize();
         setTransparentBackground();
+        setViewSize();
+        init();
         configuration();
 
+    }
 
+
+    private void findViews() {
+
+        clDialog = findViewById(R.id.cl_dialog_number);
+
+        tvTitle = findViewById(R.id.tv_title);
+        tvNumber = findViewById(R.id.tv_number);
+
+        ivLeftArrow = findViewById(R.id.iv_left_arrow);
+        ivRightArrow = findViewById(R.id.iv_right_arrow);
+
+        saveBtn = findViewById(R.id.btn_save_player);
+        ivCancel = findViewById(R.id.iv_cancle);
     }
 
     private void setTransparentBackground() {
@@ -64,29 +73,35 @@ public class PlayerDialog extends Dialog {
 
     }
 
-    public void setSize() {
+    public void setViewSize() {
         clDialog.getLayoutParams().width = MyConstant.getScreenWidth() * 93 / 100;
 
     }
 
     private void init() {
-        numbersModel = new NumbersModel(context);
 
-        if (tag.equals(MyConstant.CL_PLAYER)) {
-            tvTitle.setText(R.string.number_of_players);
-            tvNumber.setText(String.valueOf(numbersModel.getPlayerNumber()));
+        numbersModel = new NumbersModel(getContext());
 
+        switch (tag) {
 
-        } else if (tag.equals(MyConstant.CL_SPY)) {
-            tvTitle.setText(R.string.number_of_spies);
-            tvNumber.setText(String.valueOf(numbersModel.getSpyNumber()));
+            case MyConstant.CL_PLAYER:
+                counter=numbersModel.getPlayerNumber();
+                tvTitle.setText(R.string.number_of_players);
+                tvNumber.setText(String.valueOf(counter));
+                break;
 
-        } else if (tag.equals(MyConstant.CL_TIMER)) {
-            tvTitle.setText(R.string.time);
-            tvNumber.setText(String.valueOf(numbersModel.getTimerValue()) + ".min");
+            case MyConstant.CL_SPY:
+                counter=numbersModel.getSpyNumber();
+                tvTitle.setText(R.string.number_of_spies);
+                tvNumber.setText(String.valueOf(counter));
+                break;
 
+            case MyConstant.CL_TIMER:
+                counter=numbersModel.getTimerValue();
+                tvTitle.setText(R.string.time);
+                tvNumber.setText(counter+getContext().getString(R.string.minute));
+                break;
         }
-
 
     }
 
@@ -96,40 +111,40 @@ public class PlayerDialog extends Dialog {
             @Override
             public void onClick(View v) {
 
-                if (tag.equals(MyConstant.CL_PLAYER)) {
-                    counterPlayer = numbersModel.getPlayerNumber();
+                switch (tag) {
 
+                    case MyConstant.CL_PLAYER:
 
-                    if (counterPlayer < 14) {
-                        counterPlayer++;
-                    }
+                        if (counter < MyConstant.MAX_PLAYER_NUMBER) {
+                            counter++;
+                        }
+                        else
+                            Toast.makeText(getContext(), "حداکثر تعداد بازیکنان 20 نفر میباشد", Toast.LENGTH_SHORT).show();
 
+                        tvNumber.setText(String.valueOf(counter));
+                        break;
 
-                    tvNumber.setText(String.valueOf(counterPlayer));
-                    numbersModel.setPlayerNumber(counterPlayer);
+                    case MyConstant.CL_SPY:
 
-                } else if (tag.equals(MyConstant.CL_SPY)) {
+                        if (counter < (numbersModel.getPlayerNumber()) / 2) {
+                            counter++;
+                        }
+                        else {
+                            Toast.makeText(getContext(), "تعداد جاسوس ها باید کمتر از نصف تعداد بازیکنان باشد", Toast.LENGTH_LONG).show();
+                            return;
+                        }
 
-                    counterSpy = numbersModel.getSpyNumber();
+                        tvNumber.setText(String.valueOf(counter));
+                        break;
 
+                    case MyConstant.CL_TIMER:
 
+                        if (counter <= MyConstant.MAX_GAME_TIME) {
+                            counter ++;
+                        }
+                        tvNumber.setText(counter + getContext().getString(R.string.minute));
 
-                    if (counterSpy < (numbersModel.getPlayerNumber()) / 2) {
-                        counterSpy++;
-                    }
-
-                    tvNumber.setText(String.valueOf(counterSpy));
-                    numbersModel.setSpyNumber(counterSpy);
-                } else if (tag.equals(MyConstant.CL_TIMER)) {
-
-
-                    counterTimer = numbersModel.getTimerValue();
-                    if (counterTimer <= 40) {
-                        counterTimer += 5;
-                    }
-                    tvNumber.setText(String.valueOf(counterTimer) + ".min");
-                    numbersModel.setTimerValue(counterTimer);
-
+                        break;
                 }
 
             }
@@ -139,71 +154,75 @@ public class PlayerDialog extends Dialog {
             @Override
             public void onClick(View v) {
 
+                switch (tag) {
+                    case MyConstant.CL_PLAYER:
 
-                if (tag.equals(MyConstant.CL_PLAYER)) {
-                    counterPlayer = numbersModel.getPlayerNumber();
+                        if(counter<=numbersModel.getSpyNumber()*2){
+                            Toast.makeText(getContext(), "تعداد بازیکنان باید بیشتر از 2 برابر تعداد جاسوس ها باشد.", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
 
-                    if (counterPlayer > 3) {
-                        counterPlayer--;
-                    }
+                        if (counter > MyConstant.MIN_PLAYER_NUMBER) {
+                            counter--;
+                        }
+                        else
+                            Toast.makeText(getContext(), "حداقل تعداد بازیکنان 3 نفر میباشد", Toast.LENGTH_SHORT).show();
 
-                    tvNumber.setText(String.valueOf(counterPlayer));
-                    numbersModel.setPlayerNumber(counterPlayer);
+                        tvNumber.setText(String.valueOf(counter));
+                        break;
 
-                } else if (tag.equals(MyConstant.CL_SPY)) {
-                    counterSpy = numbersModel.getSpyNumber();
-
-                    if (counterSpy > 1) {
-                        counterSpy--;
-                    }
-
-                    tvNumber.setText(String.valueOf(counterSpy));
-                    numbersModel.setSpyNumber(counterSpy);
-                } else if (tag.equals(MyConstant.CL_TIMER)) {
+                    case MyConstant.CL_SPY:
 
 
-                    counterTimer = numbersModel.getTimerValue();
-                    if (counterTimer > 5) {
-                        counterTimer -= 5;
-                    }
-                    tvNumber.setText(String.valueOf(counterTimer) + ".min");
-                    numbersModel.setTimerValue(counterTimer);
+                        if (counter > MyConstant.MIN_SPY_NUMBER) {
+                            counter--;
+                        }
+                        else
+                            Toast.makeText(getContext(), "حداقل تعداد جاسوس ها 1 نفر است", Toast.LENGTH_SHORT).show();
 
+                        tvNumber.setText(String.valueOf(counter));
+                        break;
+
+                    case MyConstant.CL_TIMER:
+
+                        if (counter > MyConstant.MIN_Time) {
+                            counter --;
+                        }
+                        else
+                            Toast.makeText(getContext(), "کمترین زمان بازی 1 دقیقه است", Toast.LENGTH_SHORT).show();
+                        tvNumber.setText(counter+getContext().getString(R.string.minute));
+
+                        break;
                 }
 
             }
         });
-
 
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                numbersModel.updateNumbersModel(context, numbersModel);
-                if (tag.equals(MyConstant.CL_PLAYER)) {
-                    callBackNumbers.callNumber(numbersModel.getPlayerNumber());
+                switch (tag) {
 
+                    case MyConstant.CL_PLAYER:
+                        numbersModel.setPlayerNumber(counter);
+                        break;
+                    case MyConstant.CL_SPY:
+                        numbersModel.setSpyNumber(counter);
+                        break;
+                    case MyConstant.CL_TIMER:
+                        numbersModel.setTimerValue(counter);
 
-                } else if (tag.equals(MyConstant.CL_SPY)) {
-                    if (numbersModel.getSpyNumber() > numbersModel.getPlayerNumber() / 2) {
-                        Toast.makeText(context,"تعداد جاسوس ها بیش از نصف بازیکنان است", Toast.LENGTH_LONG).show();
-                    return;
-                    }
-                    else {  callBackNumbers.callNumber(numbersModel.getSpyNumber());}
-
-
-                } else if (tag.equals(MyConstant.CL_TIMER)) {
-
-                    callBackNumbers.callNumber(numbersModel.getTimerValue());
+                        break;
                 }
 
+                numbersModel.updateNumbersModel(getContext(), numbersModel);
+                callBackNumbers.callNumber(counter);
 
                 cancel();
 
-
             }
         });
-
 
         ivCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -212,19 +231,6 @@ public class PlayerDialog extends Dialog {
             }
         });
 
-
     }
-
-    private void findViews() {
-        ivLeftArrow = findViewById(R.id.iv_left_arrow);
-        ivRightArrow = findViewById(R.id.iv_right_arrow);
-        tvNumber = findViewById(R.id.tv_number);
-        tvTitle = findViewById(R.id.tv_title);
-        saveBtn = findViewById(R.id.btn_save_player);
-        clDialog = findViewById(R.id.cl_dialog_number);
-        ivCancel = findViewById(R.id.iv_cancle);
-
-    }
-
 
 }

@@ -1,8 +1,5 @@
 package com.example.spy.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,26 +7,29 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.spy.Interfaces.CallBackNumbers;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.example.spy.Classes.MyConstant;
-import com.example.spy.Models.NumbersModel;
 import com.example.spy.Dialogs.PlayerDialog;
+import com.example.spy.Interfaces.CallBackNumbers;
+import com.example.spy.Models.NumbersModel;
 import com.example.spy.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    NumbersModel numbersModel;
+    private TextView tvPlayerNumber;
+    private TextView tvSpyNumber;
+    private TextView tvTimerValue;
 
-    TextView tvPlayerNumber;
-    TextView tvSpyNumber;
-    TextView tvTimerValue;
+    private ConstraintLayout clPlayer;
+    private ConstraintLayout clSpy;
+    private ConstraintLayout clTimer;
+    private ConstraintLayout clObjects;
 
-    ConstraintLayout clPlayer;
-    ConstraintLayout clSpy;
-    ConstraintLayout clTimer;
-    ConstraintLayout clObjects;
+    private Button btnStart;
 
-    Button btnStart;
+    private NumbersModel numbersModel;
 
 
     @Override
@@ -55,10 +55,9 @@ public class MainActivity extends AppCompatActivity {
         clSpy = findViewById(R.id.cl_spy);
         clTimer = findViewById(R.id.cl_timer);
 
-        btnStart = findViewById(R.id.start_button);
+        btnStart = findViewById(R.id.btn_start_game);
 
     }
-
 
     public void init() {
 
@@ -66,13 +65,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     private void setUpNumbers() {
+
         tvPlayerNumber.setText(String.valueOf(numbersModel.getPlayerNumber()));
         tvSpyNumber.setText(String.valueOf(numbersModel.getSpyNumber()));
-        tvTimerValue.setText(String.valueOf(numbersModel.getTimerValue()) + ".min");
+        tvTimerValue.setText(numbersModel.getTimerValue() + getString(R.string.minute));
     }
-
 
     public void configuration() {
 
@@ -93,22 +91,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        clTimer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PlayerDialog playerDialog = new PlayerDialog(MainActivity.this, MyConstant.CL_TIMER, new CallBackNumbers() {
-                    @Override
-                    public void callNumber(int number) {
-                        tvTimerValue.setText(String.valueOf(number) + ".min");
-                    }
-                });
-                playerDialog.show();
-
-            }
-        });
-
-
         clSpy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,6 +106,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        clTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PlayerDialog playerDialog = new PlayerDialog(MainActivity.this, MyConstant.CL_TIMER, new CallBackNumbers() {
+                    @Override
+                    public void callNumber(int number) {
+                        tvTimerValue.setText(number + getString(R.string.minute));
+                    }
+                });
+                playerDialog.show();
+
+            }
+        });
 
         clObjects.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numbersModel=new NumbersModel(MainActivity.this);
+                numbersModel = new NumbersModel(MainActivity.this);
 
                 if (numbersModel.getSpyNumber() > numbersModel.getPlayerNumber() / 2) {
                     Toast.makeText(MainActivity.this, getString(R.string.more_than_half_spy), Toast.LENGTH_LONG).show();
@@ -151,6 +146,5 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
 
 }

@@ -1,10 +1,6 @@
 package com.example.spy.Classes;
 
-import android.content.Context;
 import android.content.res.Resources;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.widget.Toast;
 
 public class MyConstant {
 
@@ -16,8 +12,11 @@ public class MyConstant {
     public static final String CL_TIMER = "cl_timer";
     public static final String CL_OBJECTS = "cl_objects";
 
-
-
+    public static final int MIN_PLAYER_NUMBER = 3;
+    public static final int MAX_PLAYER_NUMBER = 20;
+    public static final int MAX_GAME_TIME = 60;
+    public static final int MIN_SPY_NUMBER = 1;
+    public static int MIN_Time = 1;
 
 
     public static int getScreenWidth() {
@@ -27,7 +26,6 @@ public class MyConstant {
     public static int getScreenHeight() {
         return Resources.getSystem().getDisplayMetrics().heightPixels;
     }
-
 
 
 }

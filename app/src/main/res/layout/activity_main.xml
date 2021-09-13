@@ -8,7 +8,6 @@
     tools:context=".Activities.MainActivity">
 
     <LinearLayout
-        android:id="@+id/ll_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -17,12 +16,11 @@
 
 
         <TextView
-            android:id="@+id/tv_game"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/spy_english"
-            android:gravity="center"
             android:fontFamily="@font/eye_spy_italic"
+            android:gravity="center"
+            android:text="@string/spy_english"
             android:textColor="@color/white"
             android:textSize="@dimen/spy_main_title_text_size"
             app:layout_constraintBottom_toTopOf="@id/cl_player"
@@ -40,14 +38,12 @@
 
     </LinearLayout>
 
-
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_items"
+    <LinearLayout
+        android:id="@+id/ll_main_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_30sdp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -56,11 +52,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_player"
-           style="@style/main_cl_base"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
+            style="@style/main_cl_base">
 
             <ImageView
                 android:id="@+id/iv_icon_player"
@@ -74,26 +66,26 @@
 
             <TextView
                 android:id="@+id/tv_player"
-                android:text="@string/players"
                 style="@style/main_title_cl"
+                android:text="@string/players"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@id/iv_icon_player"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/tv_player_number"
+                style="@style/main_numbers_cl"
+                android:text="7"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/iv_arrow_player"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <ImageView
                 android:id="@+id/iv_arrow_player"
-              style="@style/main_arrows_cl"
+                style="@style/main_arrows_cl"
                 android:background="@drawable/ic_right_arrow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_player_number"
-                android:text="7"
-              style="@style/main_numbers_cl"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/iv_arrow_player"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -101,14 +93,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_spy"
-            style="@style/main_cl_base"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_player">
+            style="@style/main_cl_base">
 
             <ImageView
                 android:id="@+id/iv_icon_spy"
-               style="@style/main_icons_cl"
+                style="@style/main_icons_cl"
                 android:background="@drawable/ic_spy"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -145,15 +134,12 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_timer"
-            style="@style/main_cl_base"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_spy">
+            style="@style/main_cl_base">
 
             <ImageView
                 android:id="@+id/iv_icon_timer"
                 style="@style/main_icons_cl"
-                android:background="@drawable/ic_timer"
+                android:background="@drawable/ic_cancel"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -162,8 +148,8 @@
 
             <TextView
                 android:id="@+id/tv_timer"
-                android:text="@string/timer"
                 style="@style/main_title_cl"
+                android:text="@string/timer"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@id/iv_icon_timer"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -178,8 +164,8 @@
 
             <TextView
                 android:id="@+id/tv_timer_number"
-                android:text="10.min"
                 style="@style/main_numbers_cl"
+                android:text="10.min"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/iv_arrow_timer"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -189,10 +175,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_objects"
-            style="@style/main_cl_base"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_timer">
+            style="@style/main_cl_base">
 
             <ImageView
                 android:id="@+id/iv_icon_objects"
@@ -206,8 +189,8 @@
 
             <TextView
                 android:id="@+id/tv_objects"
-                android:text="@string/objects"
                 style="@style/main_title_cl"
+                android:text="@string/objects"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@id/iv_icon_objects"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -224,17 +207,18 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
-<Button
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/start_game_button_height"
-    app:layout_constraintTop_toBottomOf="@id/cl_items"
-    app:layout_constraintBottom_toBottomOf="parent"
-    android:layout_marginHorizontal="@dimen/_35sdp"
-    android:text="@string/start_game"
-    android:textSize="@dimen/start_game_button_text_size"
-    android:id="@+id/start_button"
+    <Button
+        android:id="@+id/btn_start_game"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/start_game_button_height"
+        android:layout_marginHorizontal="@dimen/_35sdp"
+        android:text="@string/start_game"
+        android:textSize="@dimen/start_game_button_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_main_item"
 
-    />
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

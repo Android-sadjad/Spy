@@ -9,7 +9,7 @@
     <string name="timer">تایمر</string>
     <string name="objects">عنوان ها</string>
     <string name="start_game">شروع بازی</string>
-    <string name="minute">min</string>
+    <string name="minute">.min</string>
 
 
     <string name="number_of_players">تعداد بازیکنان</string>
@@ -27,41 +27,25 @@
     <string name="close">بستن</string>
     <string name="you_are_spy">شما جاسوس هستید</string>
     <string name="more_than_half_spy">تعداد جاسوس ها بیش از نصف بازیکنان است</string>
+    <string name="finish">پایان</string>
 
 
     <array name="location_list">
 
-<item>کارخانه</item>
-<item>خانه سالمندان</item>
-<item>گوشی فروشی</item>
-<item>عطاری</item>
-<item>سوپرمارکت</item>
-<item>مسجد</item>
-<item>طویله</item>
-<item>گلخانه</item>
-<item>دانشگاه</item>
-<item>مدرسه</item>
-<item>پارک</item>
+        <item>کارخانه</item>
+        <item>خانه سالمندان</item>
+        <item>گوشی فروشی</item>
+        <item>عطاری</item>
+        <item>سوپرمارکت</item>
+        <item>مسجد</item>
+        <item>طویله</item>
+        <item>گلخانه</item>
+        <item>دانشگاه</item>
+        <item>مدرسه</item>
+        <item>پارک</item>
 
 
- </array>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    </array>
 
 
 </resources>
