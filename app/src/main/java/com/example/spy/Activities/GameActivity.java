@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -61,7 +62,7 @@ public class GameActivity extends AppCompatActivity {
         ArrayList<Integer> spyIndexList = new ArrayList<Integer>();
         nameObjectList = new ArrayList<String>();
 
-        timerSize = (int) numbersModel.getTimerValue() * 60000;
+        timerSize = numbersModel.getTimerValue() * 60000;
 
         String[] locationList = getResources().getStringArray(R.array.location_list);
 
@@ -137,7 +138,7 @@ public class GameActivity extends AppCompatActivity {
         CountDownTimer countDownTimer = new CountDownTimer(timerSize, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                timerSize = millisUntilFinished;
+                timerSize -=1000;
                 updateTimer();
             }
 
@@ -153,14 +154,14 @@ public class GameActivity extends AppCompatActivity {
     private void updateTimer() {
         int minutes = (int) timerSize / 60000;
         int seconds = (int) timerSize % 60000 / 1000;
-        String timeLeftText;
-        timeLeftText = "" + minutes;
-        timeLeftText += ":";
+        String time;
+        time = "" + minutes;
+        time += ":";
         if (seconds < 10) {
-            timeLeftText += "0";
+            time += "0";
         }
-        timeLeftText += seconds;
-        tvNameObject.setText(timeLeftText);
+        time += seconds;
+        tvNameObject.setText(time);
     }
 
 }

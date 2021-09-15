@@ -13,8 +13,8 @@ public class MyConstant {
     public static final String CL_OBJECTS = "cl_objects";
 
     public static final int MIN_PLAYER_NUMBER = 3;
-    public static final int MAX_PLAYER_NUMBER = 20;
-    public static final int MAX_GAME_TIME = 60;
+    public static final int MAX_PLAYER_NUMBER = 30;
+    public static final int MAX_GAME_TIME = 120;
     public static final int MIN_SPY_NUMBER = 1;
     public static int MIN_Time = 1;
 
